@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MapModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="MapModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="MapModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Media" EntityType="MapModel.Store.Media" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="normPlaylistsMedias" EntityType="MapModel.Store.normPlaylistsMedias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Perfiles" EntityType="MapModel.Store.Perfiles" store:Type="Tables" store:Schema="dbo" store:Name="Perfiles">
+      <DefiningQuery>SELECT 
+      [Perfiles].[id] AS [id], 
+      [Perfiles].[perfil] AS [perfil]
+      FROM [dbo].[Perfiles] AS [Perfiles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Player" EntityType="MapModel.Store.Player" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Playlist" EntityType="MapModel.Store.Playlist" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="MapModel.Store.Usuarios" store:Type="Tables" store:Schema="dbo" store:Name="Usuarios">
+      <DefiningQuery>SELECT 
+      [Usuarios].[id] AS [id], 
+      [Usuarios].[idUsuario] AS [idUsuario], 
+      [Usuarios].[usuario] AS [usuario], 
+      [Usuarios].[contrasena] AS [contrasena], 
+      [Usuarios].[idPerfil] AS [idPerfil], 
+      [Usuarios].[idCliente] AS [idCliente], 
+      [Usuarios].[creadoPor] AS [creadoPor], 
+      [Usuarios].[modificadoPor] AS [modificadoPor], 
+      [Usuarios].[fechaCreacion] AS [fechaCreacion], 
+      [Usuarios].[fechaModificacion] AS [fechaModificacion], 
+      [Usuarios].[estado] AS [estado]
+      FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdCliente" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="nombreCliente" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="nvarchar" MaxLength="15" />
+    <Property Name="modificadoPor" Type="nvarchar" MaxLength="15" />
+    <Property Name="estado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="idPlaylist" Type="nvarchar" MaxLength="50" />
+    <Property Name="ruta" Type="nvarchar" MaxLength="200" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="nvarchar" MaxLength="15" />
+    <Property Name="modiificado" Type="nvarchar" MaxLength="15" />
+    <Property Name="estado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ext" Type="nvarchar" MaxLength="10" />
+    <Property Name="fileOriginal" Type="nvarchar" MaxLength="100" />
+    <Property Name="delete" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="normPlaylistsMedias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="archivo" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="idPlaylist" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="idMedia" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Map.dbo.Perfiles' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="perfil" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="perfil" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idPlayer" Type="nvarchar" MaxLength="50" />
+    <Property Name="idCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="uID" Type="nvarchar" MaxLength="50" />
+    <Property Name="sucursal" Type="nvarchar" MaxLength="50" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="modificadoPor" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="estado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="idPlaylist" Type="varchar" MaxLength="50" StoreGeneratedPattern="Identity" />
+    <Property Name="uPlayer" Type="varchar" MaxLength="50" />
+    <Property Name="sonido" Type="varchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="actualizar" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Playlist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idPlaylist" Type="nvarchar" MaxLength="50" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="nvarchar" MaxLength="15" />
+    <Property Name="modificadoPor" Type="nvarchar" MaxLength="15" />
+    <Property Name="estado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Map.dbo.Usuarios' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idUsuario" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="contrasena" />
+      <PropertyRef Name="idPerfil" />
+      <PropertyRef Name="idCliente" />
+      <PropertyRef Name="creadoPor" />
+      <PropertyRef Name="modificadoPor" />
+      <PropertyRef Name="fechaCreacion" />
+      <PropertyRef Name="fechaModificacion" />
+      <PropertyRef Name="estado" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="usuario" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="contrasena" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="idPerfil" Type="int" Nullable="false" />
+    <Property Name="idCliente" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="creadoPor" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="modificadoPor" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="estado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+</Schema>

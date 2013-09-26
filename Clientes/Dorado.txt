@@ -1,0 +1,4 @@
+1
+d*0*1*http://localhost:51831/clientes/18.jpg*D:\Extras\Videos\18.jpg*0
+d*0*2*http://localhost:51831/clientes/19.wmv*D:\Extras\Videos\19.wmv*0
+d*0*3*http://localhost:51831/clientes/20.wmv*D:\Extras\Videos\20.wmv*0

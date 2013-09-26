@@ -1,0 +1,10 @@
+C:\Users\SamuelAura\Desktop\AMP\bin\AMP.dll
+C:\Users\SamuelAura\Desktop\AMP\bin\AMP.pdb
+C:\Users\SamuelAura\Desktop\AMP\obj\Debug\AMP.dll
+C:\Users\SamuelAura\Desktop\AMP\obj\Debug\AMP.pdb
+C:\Users\SamuelAura\Desktop\AMP\obj\Debug\AMP.csprojResolveAssemblyReference.cache
+C:\Users\SamuelAura\Dropbox\Desarrollo Web\AMP\bin\AMP.dll
+C:\Users\SamuelAura\Dropbox\Desarrollo Web\AMP\bin\AMP.pdb
+C:\Users\SamuelAura\Dropbox\Desarrollo Web\AMP\obj\Debug\AMP.csprojResolveAssemblyReference.cache
+C:\Users\SamuelAura\Dropbox\Desarrollo Web\AMP\obj\Debug\AMP.dll
+C:\Users\SamuelAura\Dropbox\Desarrollo Web\AMP\obj\Debug\AMP.pdb

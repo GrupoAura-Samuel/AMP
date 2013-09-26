@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MapModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="MapEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="MapModel.Clientes" />
+    <EntitySet Name="Media" EntityType="MapModel.Media" />
+    <EntitySet Name="Perfiles" EntityType="MapModel.Perfiles" />
+    <EntitySet Name="Playlist" EntityType="MapModel.Playlist" />
+    <EntitySet Name="Usuarios" EntityType="MapModel.Usuarios" />
+    <EntitySet Name="normPlaylistsMedias" EntityType="MapModel.normPlaylistsMedias" />
+    <EntitySet Name="Player" EntityType="MapModel.Player" />
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdCliente" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="nombreCliente" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="modificadoPor" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="idPlaylist" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ruta" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="modiificado" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="ext" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fileOriginal" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="delete" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="perfil" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="perfil" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Playlist">
+    <Key>
+      <PropertyRef Name="Gen" />
+    </Key>
+    <Property Name="Gen" Type="Int32" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="None" Nullable="false" />
+    <Property Name="idPlaylist" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="creadoPor" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="modificadoPor" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="estado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idUsuario" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="contrasena" />
+      <PropertyRef Name="idPerfil" />
+      <PropertyRef Name="idCliente" />
+      <PropertyRef Name="creadoPor" />
+      <PropertyRef Name="modificadoPor" />
+      <PropertyRef Name="fechaCreacion" />
+      <PropertyRef Name="fechaModificacion" />
+      <PropertyRef Name="estado" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="usuario" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="contrasena" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="idPerfil" Type="Int32" Nullable="false" />
+    <Property Name="idCliente" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="creadoPor" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="modificadoPor" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="fechaModificacion" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="normPlaylistsMedias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="archivo" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="idPlaylist" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="idMedia" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="idPlayer" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="idCliente" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="uID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sucursal" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="fechaCreacion" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="DateTime" Name="fechaModificacion" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="creadoPor" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="modificadoPor" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="estado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="idPlaylist" MaxLength="50" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="uPlayer" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="sonido" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="actualizar" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+</Schema>
